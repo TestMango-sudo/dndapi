@@ -1,0 +1,105 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 1rem;
+  text-align: center;
+  justify-content: center;
+}
+body{
+  display: inline-flexbox;
+  flex-direction: column;
+  align-items: center;
+  background-image: url(assets/dragon-eye.png);
+  /* background-repeat: no-repeat; */
+  background-size:cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+#header{
+  align-self: center;
+  vertical-align: top;
+  background-image: linear-gradient(to bottom right, #f2e1a7, #a67c2e);
+  border-radius: 25px;
+  padding: 10px;
+  font-family: cursive;
+  width: 75%;
+
+ 
+}
+#navbar{
+  width: 75%;
+  display: flex;
+  justify-content: center;
+  list-style: none;
+  padding: 5px;
+  border: 10px;
+  margin-top: 10px;
+  background-image: linear-gradient(to top left, #f2e1a7, #a67c2e);
+  border-radius: 10px;
+}
+#navbar button{
+  display: inline;
+  margin: 0 10px;
+  padding: 5px;
+  border-radius: 10px;
+  background-color: #a67c2e;
+  color: white;
+  border: none;
+  cursor: pointer; 
+
+  a{
+    text-decoration: none;
+    color: white;
+  }
+}
+#spellbox, #letter-filter{
+  display: inline-flexbox;
+  width: 80%;
+  padding: 5px;
+  margin: 10px;
+  box-shadow: 2px 2px 1px black;
+  background-image: linear-gradient(to bottom right, #f2e1a7, #a67c2e);
+  border-radius: 20px;
+  position: relative;
+  
+}
+.monsterbutton {
+  margin: 5px;
+  padding: 5px;
+  border-radius: 10px;
+  background-color: #a67c2e;
+  color: white;
+  border: none;
+  cursor: pointer; 
+}
+
+.letter-buttons {
+  button { margin: 5px;
+  padding: 5px;
+  border-radius: 5px;
+  background-color: #a67c2e;
+  color: white;
+  border: none;
+  cursor: pointer; }
+}
+
+.monster-box {
+  width: 60%;
+  display: inline-flexbox;
+  padding: 5px;
+  margin: 10px;
+  font-weight: bolder;
+  box-shadow: 2px 2px 1px black;
+  background-image: linear-gradient(to bottom right, #f2e1a7, #a67c2e);
+  border-radius: 10px;
+  position: relative;
+
+  .monster-image {
+    width: 50%;
+    border-radius: 5px;
+    height: 50%;
+    border-radius: 10px;
+    margin-top: 10px;
+  }
+}
