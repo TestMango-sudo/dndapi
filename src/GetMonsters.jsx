@@ -18,23 +18,14 @@ function GetMonsters(){
 
     function showMonster(event) {        
         const monster = event.target.value.replaceAll(" ","-").toLowerCase()
-        navigate(`/monsters/${monster}`)
-        console.log("FROM GETMONSTERS ><>",monster)
-        
-            //navigate(`${data.name.replaceAll(" ", "-").toLowerCase()}`, {state: {monster, imgUrl}})
-            // alert(`Monster Name: ${data.name} \n Alignment: ${data.alignment} \n Hit Points: ${data.hit_points} \n Hit Dice: ${data.hit_dice} \n 
-            //     Strength: ${data.strength} \n Dexterity: ${data.dexterity} \n Constitution: ${data.constitution} \n Intelligence: ${data.intelligence} \n 
-            //     Wisdom: ${data.wisdom} \n Charisma: ${data.charisma} \n 
-            //     Armor Class: ${Object.entries(...data.armor_class).map(([key, value]) => `${key}: ${value}`).join(', ')} \n
-            //     Speed: ${Object.entries(data.speed).map(([key, value]) => `${key}: ${value}`).join(', ')} \n 
-            //     Special Abilities: ${data.special_abilities ? data.special_abilities.map(ability => ability.name).join(', ') : 'N/A'} \n
-            //     Actions: ${data.legendary_actions ? data.legendary_actions.map(ability => ability.name).join(', ') : 'N/A'} \n` 
-            // )
-                      
-        //})
-        
+        navigate(`/monsters/${monster}`)   
     }
 
+    function addUrls(){
+        for (let monster of monsterData) {
+            monster["imageURL"] = "https://www.dnd5eapi.co/api/images/monsters/"+monster.name.replaceAll(" ","-").toLowerCase()+".png"
+        }
+    }
     return (
         <div className="filterBet">
             <section id="letter-filter">
@@ -47,26 +38,21 @@ function GetMonsters(){
                             setMonsterData(filteredMonsters);
                         }}>{letter}</button>
                     ))}
-                    <button onClick={() => {
-                        getAllMonsters().then((data)=>{
-                            setMonsterData(data.results)
-                            setMonstersLoading(false)
-                        })
-                    }}>Reset</button>
                 </div>
             </section>
 
             <section id="monsters">
-                <h2 id="monsters.title">Monsters</h2>
-                <h3>{ MonstersLoading ? 'Loading Monsters...' : monsterData.filter((monster)=> monster.name.startsWith(letter)).map((monster)=>{
-                    return <ul id="spellbox" key={monster.index}>
-                        <p>Monster Name: {monster.name}</p>
-                        <div className="monsterDetails">
-                            <button className="monsterbutton" onClick={showMonster} value={monster.name}>Show {monster.name} Details</button>
+                {addUrls()}
+                { MonstersLoading ? 'Loading Monsters...' : monsterData.filter((monster)=> monster.name.startsWith(letter)).map((monster)=>{
+                    return <ul id="monster-box" key={monster.index}>
+                        <div className="monster-details">
+                            <p>{monster.name}</p>
+                            <img class="monster-list-image" src={monster.imageURL} alt={monster.name} />
+                            <button className="monsterbutton" onClick={showMonster} value={monster.name}>Show {monster.name} stats</button>
                         </div>
                         </ul>
-                })}</h3>
-            </section>
+                })}
+            </section>  
         </div>
     )
 }   

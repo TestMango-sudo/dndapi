@@ -8,11 +8,11 @@ function selectedMonster(){
     const [imgUrl, setImgUrl] = useState("");
 useEffect(() => {
     getMonster(monsterName).then(data => { 
-            console.log("Monster AC from data >>", data.armor_class)
+            //console.log("Monster AC from data >>", data.armor_class)
             setMonster(data)
             //console.log("Monster AC>>", monster.armor_class[0])
             setImgUrl("https://www.dnd5eapi.co"+data.image)
-            console.log(imgUrl)
+            console.log("imgURL>>", data.image)
     })
 },[])
     return (
